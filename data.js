@@ -170,7 +170,7 @@ window.gameData = {
         "image": " ",
         "text": "정답입니다.\n석화는 굴입니다.\n이 사람은 그 사실을 꽤 마음에 들어 하고,\n지금도 종종 별명으로 씁니다.",
         "options": [
-            { "text": "이름치고는 솔직하네", "nextInfo": "next_random" }
+            { "text": "특이하네", "nextInfo": "next_random" }
         ]
     },
 
@@ -212,7 +212,7 @@ window.gameData = {
         "image": " ",
         "text": "아닙니다.\n멋있어 보이는 건 금방 식습니다.\n쓰이지 않으면,\n없는 것과 다를 바 없다고 생각합니다.",
         "options": [
-            { "text": "다시 써본다", "nextInfo": "q9" }
+            { "text": "다시 고른다", "nextInfo": "q9" }
         ]
     },
 
@@ -250,10 +250,18 @@ window.gameData = {
     },
 
     "true_ending": {
-        "image": "",
-        "text": "축하합니다.\n당신은 준비된 모든 질문을 통과했습니다.\n이제 이 사람에 대해 꽤 많이 알게 되었습니다.\n\n하지만 현실의 이 사람이 당신이 상상하는 모습일지는 모르겠군요.",
+        "image": "img/a_planner.png",
+        "text": "축하합니다.\n당신은 준비된 모든 질문을 통과했습니다.\n이제 이 사람에 대해 꽤 많이 알게 되었습니다.\n\n하지만 현실에서는,\n퀴즈보다 더 복잡한 문제들이 기다리고 있습니다.\n그래도 당신이라면,\n꽤 재미있는 답을 찾을 겁니다.",
         "options": [
             { "text": "처음부터 다시 하기 (기억 리셋)", "nextInfo": "reset_all" }
+        ]
+    },
+
+    "game_over": {
+        "image": " ",
+        "text": "모든 하트를 잃었습니다. 다시 시작하세요.",
+        "options": [
+            { "text": "다시 시작하기", "action": "startGame" }
         ]
     }
 };

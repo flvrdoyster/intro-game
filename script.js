@@ -23,6 +23,7 @@ class GameManager {
         };
 
         this.typewriterSound = new Audio("mp3/typewriter.mp3");
+        this.typewriterSound.loop = true;
         this.init();
     }
 
@@ -55,7 +56,9 @@ class GameManager {
     }
 
     startGame(skipIntro = false) {
-        this.hearts = this.maxHearts;
+        if (!skipIntro) {
+            this.hearts = this.maxHearts;
+        }
         this.updateHeartsUI();
         this.elements.heartContainer.style.display = 'flex'; // Show Hearts
 
@@ -101,21 +104,8 @@ class GameManager {
     }
 
     gameOver() {
-        // Show Game Over using common renderer structure? 
-        // Or just re-use the Start Screen style but with Game Over text.
-        // Let's create a Game Over Scene Data.
-
-        const gameOverData = {
-            text: '모든 하트를 잃었습니다. 다시 도전하세요!',
-            image: " ", // Use no-image for game over or maybe a specific one?
-            // Original code didn't specify an image for game over, it just showed start screen.
-            // Let's keep it simple: no image.
-            options: [
-                { text: '다시 시작하기', action: 'startGame' }
-            ]
-        };
-
-        this.renderScene(gameOverData);
+        // Load Game Over scene from data
+        this.loadScene('game_over');
         this.elements.heartContainer.style.display = 'none';
     }
 
@@ -159,21 +149,34 @@ class GameManager {
         this.elements.storyText.innerHTML = '';
         if (this.typingInterval) clearInterval(this.typingInterval);
 
+        this.isTyping = true;
+
         // Sound start
         if (this.typewriterSound) {
-            this.typewriterSound.pause();
             this.typewriterSound.currentTime = 0;
             this.typewriterSound.volume = 0.5;
-            this.typewriterSound.play().catch(() => { });
+            this.typewriterSound.play().then(() => {
+                if (!this.isTyping) {
+                    this.typewriterSound.pause();
+                    this.typewriterSound.currentTime = 0;
+                }
+            }).catch(() => { });
         }
 
         this.typingInterval = setInterval(() => {
             if (i < text.length) {
-                this.elements.storyText.innerHTML += text.charAt(i);
+                const char = text.charAt(i);
+                this.elements.storyText.innerHTML += (char === '\n') ? '<br>' : char;
                 i++;
             } else {
                 clearInterval(this.typingInterval);
-                if (this.typewriterSound) this.typewriterSound.pause();
+                this.isTyping = false;
+
+                if (this.typewriterSound) {
+                    this.typewriterSound.pause();
+                    this.typewriterSound.currentTime = 0;
+                }
+
                 this.elements.storyText.innerHTML += '<span class="typing-cursor">|</span>';
                 if (onComplete) onComplete();
             }
@@ -260,7 +263,13 @@ class GameManager {
             if (this.currentQIndex < this.questionQueue.length) {
                 this.loadScene(this.questionQueue[this.currentQIndex]);
             } else if (this.currentQIndex === this.questionQueue.length) {
-                this.loadScene('q_end');
+                // Check if q_end is already solved
+                if (this.solvedQuestions.has('q_end')) {
+                    // Start New Round directly
+                    this.startGame(true);
+                } else {
+                    this.loadScene('q_end');
+                }
             } else {
                 // Already passed q_end logic (Index > length) -> Start New Round
                 this.startGame(true);
@@ -273,7 +282,9 @@ class GameManager {
             if (option.isCorrect) {
                 this.playSound('correct');
                 // Mark solved
-                if (this.currentSceneId && /^q\d+$/.test(this.currentSceneId)) {
+                // Mark q_end as solved if current scene is q_end (meaning we just answered it correctly)
+                // Or generalized regex for q\d+
+                if (this.currentSceneId && (/^q\d+$/.test(this.currentSceneId) || this.currentSceneId === 'q_end')) {
                     this.solvedQuestions.add(this.currentSceneId);
                 }
             } else {

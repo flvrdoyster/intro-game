@@ -120,7 +120,6 @@ body {
     padding-bottom: 30px;
     /* Add space for the fact */
     overflow-y: auto;
-    border-bottom: 1px solid var(--border-color);
     position: relative;
     /* For absolute positioning of useless fact */
     font-size: var(--main-font-size);
@@ -134,16 +133,21 @@ body {
     text-align: left;
 }
 
-/* Bottom: Options (Fixed Proportional Height) */
+/* Bottom: Options (Flexible Height) */
 .options-area {
-    height: 15%;
-    /* Fixed percentage */
+    height: 25%;
+    /* Increased height for vertical stack */
     display: flex;
+    flex-direction: column;
+    /* Vertical stack */
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 0 10px;
+    padding: 10px 20px;
+    /* Added side padding */
     background: #fff;
+    border-top: 1px solid var(--border-color);
+    /* Optional separator */
 }
 
 /* Useless Fact */
@@ -164,18 +168,22 @@ body {
 
 /* --- Components --- */
 .option-button {
+    width: 100%;
+    /* Full width */
     background-color: #4a4a4a;
-    /* Reverted to dark filled background */
     color: #ffffff;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    /* More padding */
+    border-radius: 25px;
     font-size: 1rem;
     cursor: pointer;
     font-family: var(--font-family);
     transition: transform 0.2s, background-color 0.2s;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
-    /* Restored shadow */
+    text-align: left;
+    /* Left align for long text */
+    line-height: 1.3;
 }
 
 .option-button:hover {
