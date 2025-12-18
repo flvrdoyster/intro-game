@@ -1,159 +1,300 @@
-// JavaScript 파일 구성:
-// 1. 전역 변수 및 DOM 요소 캐싱
-// 2. 게임 시작 및 페이지 초기화 함수 (initGame)
-// 3. 타자기 효과 함수 (typewriterEffect)
-// 4. 페이지 전환 및 콘텐츠 표시 함수 (showPage)
-// 5. 이벤트 리스너 설정
+// import { gameData, uselessFacts } from './data.js'; // Removed for local file compatibility
 
-// 전역 변수 및 DOM 요소 캐싱
-const storyTextElement = document.getElementById('storyText');
-const optionsContainerElement = document.getElementById('optionsContainer');
-const imageContainerElement = document.getElementById('imageContainer');
-const startScreenElement = document.getElementById('start-screen');
-const gameContentElement = document.getElementById('game-content');
-const introImageContainerElement = document.getElementById('introImageContainer');
-const gameImageElement = document.getElementById('gameImage');
-const heartContainerElement = document.getElementById('heart-container');
-let typingInterval;
-let hearts = 3;
+class GameManager {
+    constructor() {
+        this.hearts = 3;
+        this.maxHearts = 3;
+        this.typingInterval = null;
+        this.solvedQuestions = new Set();
+        this.currentSceneId = null;
 
-// 오디오 요소 캐싱
-const typewriterSound = new Audio("mp3/typewriter.mp3"); // New Audio() is already here
-const correctSound = document.getElementById('correctSound');
-const incorrectSound = document.getElementById('incorrectSound');
+        // Cache DOM elements
+        this.elements = {
+            sceneView: document.getElementById('scene-view'),
+            gameImage: document.getElementById('gameImage'),
+            storyText: document.getElementById('storyText'),
+            optionsContainer: document.getElementById('optionsContainer'),
 
-// 하트 업데이트 및 이미지 투명도 조절 함수
-function updateHearts() {
-    const heartSvgs = heartContainerElement.querySelectorAll('.heart-svg');
-    heartSvgs.forEach((heart, index) => {
-        if (index < hearts) {
-            heart.classList.remove('empty');
-        } else {
-            heart.classList.add('empty');
+            // Heart Container
+            heartContainer: document.getElementById('heart-container'),
+
+            correctSound: document.getElementById('correctSound'),
+            incorrectSound: document.getElementById('incorrectSound'),
+        };
+
+        this.typewriterSound = new Audio("mp3/typewriter.mp3");
+        this.init();
+    }
+
+    init() {
+        // Start by showing the Title Scene
+        this.showTitle();
+    }
+
+    showTitle() {
+        // Construct Title Scene Data from Config
+        const config = window.gameConfig || {
+            title: "Game Title",
+            image: "",
+            buttonText: "Start"
+        };
+
+        const titleSceneData = {
+            text: config.title,
+            image: config.image,
+            options: [
+                { text: config.buttonText, action: 'startGame' }
+            ]
+        };
+
+        // Render it using the common renderer
+        this.renderScene(titleSceneData);
+
+        // Hide Hearts on Title
+        this.elements.heartContainer.style.display = 'none';
+    }
+
+    startGame(skipIntro = false) {
+        this.hearts = this.maxHearts;
+        this.updateHeartsUI();
+        this.elements.heartContainer.style.display = 'flex'; // Show Hearts
+
+        // Random Question Logic
+        // 1. Filter valid questions (q + number, e.g., q1, q10)
+        const allKeys = Object.keys(window.gameData);
+        const questionKeys = allKeys.filter(key => /^q\d+$/.test(key));
+
+        // 2. Filter out already solved questions
+        const remainingQuestions = questionKeys.filter(key => !this.solvedQuestions.has(key));
+
+        // Check if True Ending condition met (all randoms solved)
+        if (remainingQuestions.length === 0 && questionKeys.length > 0) {
+            this.loadScene('true_ending');
+            this.elements.heartContainer.style.display = 'none'; // Hide hearts for ending
+            return;
         }
-    });
 
-    gameImageElement.classList.remove('image-filter-low', 'image-filter-medium', 'image-filter-high');
-    if (hearts === 3) {
-        gameImageElement.classList.add('image-filter-low');
-    } else if (hearts === 2) {
-        gameImageElement.classList.add('image-filter-medium');
-    } else if (hearts === 1) {
-        gameImageElement.classList.add('image-filter-high');
-    }
-}
+        // 3. Shuffle remaining
+        for (let i = remainingQuestions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [remainingQuestions[i], remainingQuestions[j]] = [remainingQuestions[j], remainingQuestions[i]];
+        }
 
+        // 4. Pick 3 (or less)
+        this.questionQueue = remainingQuestions.slice(0, 3);
+        this.currentQIndex = -1;
 
+        console.log("Selected Questions:", this.questionQueue);
 
-// 게임 오버 함수
-function gameOver() {
-    gameContentElement.style.display = 'none';
-    startScreenElement.style.display = 'flex';
-    document.getElementById('startButton').textContent = '다시 시작하기';
-    document.querySelector('#start-screen h1').textContent = '게임 오버';
-    document.querySelector('#start-screen p').textContent = '모든 하트를 잃었습니다. 다시 도전하세요!';
-    hearts = 3;
-    updateHearts();
-}
-
-// 게임 시작을 위한 초기화 함수
-function initGame() {
-    // Corrected: sound = new Audio(typewriterSound);
-    startScreenElement.style.display = 'none';
-    gameContentElement.style.display = 'flex';
-    updateHearts();
-    showPage('start');
-}
-
-// 타자기 효과를 구현하는 함수
-function typewriterEffect(text, onComplete) {
-    let i = 0;
-    storyTextElement.innerHTML = '';
-    clearInterval(typingInterval);
-
-    // Corrected: use typewriterSound directly
-    if (typewriterSound) {
-        typewriterSound.pause();
-        typewriterSound.currentTime = 0;
-        typewriterSound.volume = 0.5;
-        typewriterSound.play().catch(e => console.error("Sound playback failed:", e));
-    }
-
-    typingInterval = setInterval(() => {
-        if (i < text.length) {
-            storyTextElement.innerHTML += text.charAt(i);
-            i++;
-        } else {
-            clearInterval(typingInterval);
-            if (typewriterSound) {
-                typewriterSound.pause();
+        if (skipIntro) {
+            // Directly load to first random question if possible
+            if (this.questionQueue.length > 0) {
+                this.currentQIndex = 0;
+                this.loadScene(this.questionQueue[0]);
+            } else {
+                this.loadScene('q_end');
             }
-            storyTextElement.innerHTML += '<span class="typing-cursor">|</span>';
-            onComplete();
+        } else {
+            // Load Fixed First Question
+            this.loadScene('start');
         }
-    }, 50);
-}
-
-// 특정 페이지의 내용을 표시하는 함수
-function showPage(pageId) {
-    const template = document.getElementById(pageId);
-    if (!template) {
-        console.error(`Error: Template with ID '${pageId}' not found.`);
-        return;
     }
 
-    if (pageId === 'start') {
-        hearts = 3;
-        updateHearts();
+    gameOver() {
+        // Show Game Over using common renderer structure? 
+        // Or just re-use the Start Screen style but with Game Over text.
+        // Let's create a Game Over Scene Data.
+
+        const gameOverData = {
+            text: '모든 하트를 잃었습니다. 다시 도전하세요!',
+            image: " ", // Use no-image for game over or maybe a specific one?
+            // Original code didn't specify an image for game over, it just showed start screen.
+            // Let's keep it simple: no image.
+            options: [
+                { text: '다시 시작하기', action: 'startGame' }
+            ]
+        };
+
+        this.renderScene(gameOverData);
+        this.elements.heartContainer.style.display = 'none';
     }
 
-    const pageDataElement = template.content.cloneNode(true).querySelector('.page-data');
-    const textContent = pageDataElement.querySelector('p').textContent;
-    const imageUrl = pageDataElement.dataset.image;
-
-    optionsContainerElement.innerHTML = '';
-    gameImageElement.src = imageUrl;
-
-    typewriterEffect(textContent, () => {
-        const options = pageDataElement.querySelectorAll('.options button');
-        optionsContainerElement.innerHTML = '';
-        options.forEach(option => {
-            const button = document.createElement('button');
-            button.textContent = option.textContent;
-            button.className = 'option-button';
-            const nextId = option.dataset.next;
-            const hasCorrectAttribute = option.hasAttribute('data-correct');
-            const isCorrect = option.dataset.correct === 'true';
-
-            button.onclick = () => {
-                if (hasCorrectAttribute) {
-                    if (isCorrect) {
-                        // 정답일 때
-                        correctSound.currentTime = 0;
-                        correctSound.play().catch(e => console.error("Sound playback failed:", e));
-                        showPage(nextId);
-                    } else {
-                        // 오답일 때
-                        incorrectSound.currentTime = 0;
-                        incorrectSound.play().catch(e => console.error("Sound playback failed:", e));
-                        hearts--;
-                        updateHearts();
-                        if (hearts <= 0) {
-                            gameOver();
-                        } else {
-                            showPage(nextId);
-                        }
-                    }
-                } else {
-                    showPage(nextId);
-                }
-            };
-            optionsContainerElement.appendChild(button);
+    updateHeartsUI() {
+        const hearts = this.elements.heartContainer.querySelectorAll('.heart-icon');
+        hearts.forEach((heart, index) => {
+            if (index < this.hearts) {
+                heart.src = 'img/full-heart.svg';
+            } else {
+                heart.src = 'img/empty-heart.svg';
+            }
         });
-    });
+
+        // Update image filter
+        this.elements.gameImage.classList.remove('image-filter-low', 'image-filter-medium', 'image-filter-high');
+        if (this.hearts === 3) {
+            this.elements.gameImage.classList.add('image-filter-low');
+        } else if (this.hearts === 2) {
+            this.elements.gameImage.classList.add('image-filter-medium');
+        } else if (this.hearts === 1) {
+            this.elements.gameImage.classList.add('image-filter-high');
+        }
+    }
+
+    playSound(type) {
+        try {
+            if (type === 'correct') {
+                this.elements.correctSound.currentTime = 0;
+                this.elements.correctSound.play().catch(e => console.log('Audio play failed', e));
+            } else if (type === 'incorrect') {
+                this.elements.incorrectSound.currentTime = 0;
+                this.elements.incorrectSound.play().catch(e => console.log('Audio play failed', e));
+            }
+        } catch (e) {
+            console.warn("Sound error:", e);
+        }
+    }
+
+    typewriterEffect(text, onComplete) {
+        let i = 0;
+        this.elements.storyText.innerHTML = '';
+        if (this.typingInterval) clearInterval(this.typingInterval);
+
+        // Sound start
+        if (this.typewriterSound) {
+            this.typewriterSound.pause();
+            this.typewriterSound.currentTime = 0;
+            this.typewriterSound.volume = 0.5;
+            this.typewriterSound.play().catch(() => { });
+        }
+
+        this.typingInterval = setInterval(() => {
+            if (i < text.length) {
+                this.elements.storyText.innerHTML += text.charAt(i);
+                i++;
+            } else {
+                clearInterval(this.typingInterval);
+                if (this.typewriterSound) this.typewriterSound.pause();
+                this.elements.storyText.innerHTML += '<span class="typing-cursor">|</span>';
+                if (onComplete) onComplete();
+            }
+        }, 50);
+    }
+
+    loadScene(sceneId) {
+        this.currentSceneId = sceneId;
+        const data = window.gameData[sceneId];
+        if (!data) {
+            console.error(`Scene ${sceneId} not found`);
+            return;
+        }
+
+        // Pass the sceneId primarily for Useless Fact logic
+        this.renderScene(data, sceneId);
+    }
+
+    renderScene(data, sceneId = null) {
+        // Reset UI
+        this.elements.optionsContainer.innerHTML = '';
+
+        // Handle Image presence
+        // Check for empty string or null/undefined
+        if (data.image && data.image.trim() !== "") {
+            this.elements.sceneView.classList.remove('no-image');
+            this.elements.gameImage.src = data.image;
+            this.elements.gameImage.style.display = 'block';
+        } else {
+            this.elements.sceneView.classList.add('no-image');
+            this.elements.gameImage.src = '';
+        }
+
+        // Type text
+        this.typewriterEffect(data.text, () => {
+            this.showOptions(data.options);
+        });
+
+        // Useless Fact Logic (Show on 'wrong' screens)
+        const factEl = document.getElementById('useless-fact');
+        if (factEl) {
+            // Only show facts if sceneId is provided (meaning it's a game scene)
+            if (sceneId && (sceneId.includes('wrong') || sceneId.includes('half') || sceneId.includes('roast'))) {
+                const uselessFacts = window.uselessFacts;
+                const randomFact = uselessFacts[Math.floor(Math.random() * uselessFacts.length)];
+                factEl.textContent = `* ${randomFact}`;
+                factEl.style.display = 'block';
+            } else {
+                factEl.style.display = 'none';
+            }
+        }
+    }
+
+    showOptions(options) {
+        this.elements.optionsContainer.innerHTML = '';
+        if (!options) return;
+
+        options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-button';
+            btn.textContent = opt.text;
+            btn.onclick = () => this.handleOptionClick(opt);
+            this.elements.optionsContainer.appendChild(btn);
+        });
+    }
+
+    handleOptionClick(option) {
+        // Special Action: Start Game
+        if (option.action === 'startGame') {
+            this.startGame();
+            return;
+        }
+
+        // Reset All Action
+        if (option.nextInfo === 'reset_all') {
+            this.solvedQuestions.clear();
+            this.showTitle();
+            return;
+        }
+
+        // Random Flow Logic
+        if (option.nextInfo === 'next_random') {
+            this.currentQIndex++;
+            if (this.currentQIndex < this.questionQueue.length) {
+                this.loadScene(this.questionQueue[this.currentQIndex]);
+            } else if (this.currentQIndex === this.questionQueue.length) {
+                this.loadScene('q_end');
+            } else {
+                // Already passed q_end logic (Index > length) -> Start New Round
+                this.startGame(true);
+            }
+            return;
+        }
+
+        // Check correctness if defined
+        if (option.hasOwnProperty('isCorrect')) {
+            if (option.isCorrect) {
+                this.playSound('correct');
+                // Mark solved
+                if (this.currentSceneId && /^q\d+$/.test(this.currentSceneId)) {
+                    this.solvedQuestions.add(this.currentSceneId);
+                }
+            } else {
+                this.playSound('incorrect');
+                this.hearts--;
+                this.updateHeartsUI();
+
+                if (this.hearts <= 0) {
+                    this.gameOver();
+                    return;
+                }
+            }
+        }
+
+        if (option.nextInfo) {
+            this.loadScene(option.nextInfo);
+        }
+    }
 }
 
+// Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('startButton').onclick = initGame;
-    updateHearts();
+    window.game = new GameManager();
 });

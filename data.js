@@ -1,0 +1,286 @@
+window.gameData = {
+    "start": {
+        "image": " ",
+        "text": "이건 한 사람을 소개하는 퀴즈입니다.\n그리고 지금, 당신은 남의 취향을 맞히는 데 시간을 쓰려고 합니다. (네, 자발적으로요.)\n첫 질문부터 바로 갑니다. \n이 사람은 뭘 더 원할까요?",
+        "options": [
+            { "text": "인생을 바꿀 묘책", "nextInfo": "start_wrong", "isCorrect": false },
+            { "text": "게임", "nextInfo": "start_correct", "isCorrect": true }
+        ]
+    },
+
+    "start_wrong": {
+        "image": " ",
+        "text": "아닙니다.\n이 사람은 성장에 관심이 없는 건 아닌데,\n‘이거 하나면 인생이 바뀝니다’ 같은 말은 잘 못 믿습니다.\n방금 당신도 그 말에 가까운 선택을 했습니다.",
+        "options": [
+            { "text": "아무 일 없던 척 다시", "nextInfo": "start" }
+        ]
+    },
+
+    "start_correct": {
+        "image": " ",
+        "text": "정답.\n게임을 좋아합니다.\n재미있으면 좋고, 재미없으면 그냥 넘기지 않습니다.\n‘왜 재미없지?’까지 가는 타입입니다.\n그래서 당신의 지금 이 선택도, 이미 관찰 대상입니다.",
+        "options": [
+            { "text": "괜히 눌렀다", "nextInfo": "next_random" }
+        ]
+    },
+
+    "q2": {
+        "image": " ",
+        "text": "그럼 이 사람이 좋아할 만한 아이돌은?",
+        "options": [
+            { "text": "요즘 많이 보이는 팀", "nextInfo": "q2_wrong", "isCorrect": false },
+            { "text": "르세라핌", "nextInfo": "q2_correct", "isCorrect": true }
+        ]
+    },
+
+    "q2_wrong": {
+        "image": " ",
+        "text": "아닙니다.\n이 사람은 생각보다 한 번 꽂히면 오래 갑니다.\n당신의 선택은 빠르고 가벼웠습니다.\n이 사람은 그걸 맘에 들어하지 않습니다.",
+        "options": [
+            { "text": "다시 생각해본다", "nextInfo": "q2" }
+        ]
+    },
+
+    "q2_correct": {
+        "image": " ",
+        "text": "정답.\n노래도 좋아하지만, 메시지와 태도는 더욱 더 좋습니다. 최고는 역시 퍼포먼스죠.\n대부분은 그냥 넘길 부분에서\n혼자 진지해졌다가, 다시 혼자 만족합니다.",
+        "options": [
+            { "text": "벌써 피곤하다", "nextInfo": "next_random" }
+        ]
+    },
+
+    "q3": {
+        "image": " ",
+        "text": "이 사람의 일을 가장 정확하게 말하면?",
+        "options": [
+            { "text": "아무튼 기획자 (대충 맞는 말)", "nextInfo": "q3_half", "isCorrect": false },
+            { "text": "당신이 왜 그런 선택을 했는지 끝까지 캐묻는 사람", "nextInfo": "q3_correct", "isCorrect": true }
+        ]
+    },
+
+    "q3_half": {
+        "image": " ",
+        "text": "반만 맞았습니다.\n‘아무튼’이라고 말하는 순간,\n이 사람 머릿속에서는 질문이 몇 개 더 생깁니다.\n지금 당신도 그중 하나입니다.",
+        "options": [
+            { "text": "질문에서 빠져나가기", "nextInfo": "q3" }
+        ]
+    },
+
+    "q3_correct": {
+        "image": " ",
+        "text": "정답.\n네이버 커넥트재단에서 서비스 기획을 합니다.\n쉽게 말하면,\n서비스라는 집의 설계도를 그리는 역할입니다.\n그리고 지금 이 퀴즈도, 설계가 좀 과합니다.",
+        "options": [
+            { "text": "불안하지만 진행", "nextInfo": "next_random" }
+        ]
+    },
+
+    "q4": {
+        "image": " ",
+        "text": "이 사람의 집요함이 가장 많이 쓰이는 곳은?",
+        "options": [
+            { "text": "고양이 그림 디테일", "nextInfo": "q4_correct", "isCorrect": true },
+            { "text": "할 일 목록 깔끔하게 관리하기", "nextInfo": "q4_wrong", "isCorrect": false }
+        ]
+    },
+
+    "q4_wrong": {
+        "image": " ",
+        "text": "아닙니다.\n할 일 목록은 생각보다 자주 밀립니다.\n대신 고양이 디테일은 절대 안 밀립니다.\n중요도의 기준이 조금 독특합니다.",
+        "options": [
+            { "text": "기준에 적응해본다", "nextInfo": "q4" }
+        ]
+    },
+
+    "q4_correct": {
+        "image": " ",
+        "text": "정답.\n입 오른쪽 아래에 있는 까만 점.\n이걸 빼먹으면,\n‘아무리 잘 그려도 다시’입니다.\n당신의 관찰력은 간신히 통과.",
+        "options": [
+            { "text": "괜히 안도한다", "nextInfo": "next_random" }
+        ]
+    },
+
+    "q5": {
+        "image": " ",
+        "text": "이 사람이 실제로 해본 요리는?",
+        "options": [
+            { "text": "고등어 스파게티", "nextInfo": "q5_correct", "isCorrect": true },
+            { "text": "뵈프 부르기뇽", "nextInfo": "q5_wrong", "isCorrect": false }
+        ]
+    },
+
+    "q5_wrong": {
+        "image": " ",
+        "text": "아닙니다.\n이건 과대평가입니다.\n대신 생선을 파스타에 넣는 정도의 용기는 있습니다.\n그리고 당신보다 맛있게 했을 가능성도 있습니다.",
+        "options": [
+            { "text": "괜히 비교당함", "nextInfo": "q5" }
+        ]
+    },
+
+    "q5_correct": {
+        "image": " ",
+        "text": "정답.\n레시피도 결국 유저 플로우라고 생각합니다.\n간은 취향 따라 조절하지만,\n당신의 선택권은 여기까지입니다.",
+        "options": [
+            { "text": "선택권 없이 계속", "nextInfo": "next_random" }
+        ]
+    },
+
+    "q6": {
+        "image": "",
+        "text": "이 사람이 생각하는 기획자의 역할에 가장 가까운 설명은?",
+        "options": [
+            { "text": "일을 잘 정리해주는 사람", "nextInfo": "q6_wrong", "isCorrect": false },
+            { "text": "고개를 끄덕이게 만드는 사람", "nextInfo": "q6_correct", "isCorrect": true }
+        ]
+    },
+
+    "q6_wrong": {
+        "image": "",
+        "text": "아쉽습니다.\n정리도 하긴 합니다.\n하지만 정리만 잘 하는게 끝이라면,\n굳이 여기까지 오진 않았을 겁니다.",
+        "options": [
+            { "text": "납득해보며 다시", "nextInfo": "q6" }
+        ]
+    },
+
+    "q6_correct": {
+        "image": "",
+        "text": "정답입니다.\n이 사람이 일을 계속 붙잡고 있는 이유도,\n대부분 여기쯤에 있습니다.",
+        "options": [
+            { "text": "이해는 잘 안 되지만 계속", "nextInfo": "q_end" }
+        ]
+    },
+
+    "q7": {
+        "image": " ",
+        "text": "이 사람의 이름에서 비롯된, 본인이 직접 쓰는 별명은?",
+        "options": [
+            { "text": "굴", "nextInfo": "q7_correct", "isCorrect": true },
+            { "text": "돌꽃", "nextInfo": "q7_wrong", "isCorrect": false }
+        ]
+    },
+
+    "q7_wrong": {
+        "image": " ",
+        "text": "아닙니다.\n뜻이 그럴싸하지도 않습니다.\n이 사람은 생각보다 직관적인 쪽입니다.",
+        "options": [
+            { "text": "다시 생각해본다", "nextInfo": "q7" }
+        ]
+    },
+
+    "q7_correct": {
+        "image": " ",
+        "text": "정답입니다.\n석화는 굴입니다.\n이 사람은 그 사실을 꽤 마음에 들어 하고,\n지금도 종종 별명으로 씁니다.",
+        "options": [
+            { "text": "이름치고는 솔직하네", "nextInfo": "next_random" }
+        ]
+    },
+
+    "q8": {
+        "image": " ",
+        "text": "이 사람이 스스로를 설명할 때 가장 자주 꺼내는 단어는?",
+        "options": [
+            { "text": "완벽주의", "nextInfo": "q8_wrong", "isCorrect": false },
+            { "text": "예민함", "nextInfo": "q8_correct", "isCorrect": true }
+        ]
+    },
+
+    "q8_wrong": {
+        "image": " ",
+        "text": "아닙니다.\n완벽을 원하진 않습니다.\n다만, 남들보다 잘 느끼는 편입니다.\n비슷해 보여도 이 사람은 구분합니다.",
+        "options": [
+            { "text": "구분해보며 다시", "nextInfo": "q8" }
+        ]
+    },
+
+    "q8_correct": {
+        "image": " ",
+        "text": "정답입니다.\n이 사람은 예민함을\n단점보다는 도구에 가깝게 생각합니다.\n관리만 되면, 꽤 쓸 만하다고 믿습니다.",
+        "options": [
+            { "text": "도구 취급 당하러 다음", "nextInfo": "next_random" }
+        ]
+    },
+
+    "q9": {
+        "image": " ",
+        "text": "이 사람이 일을 설명할 때 중요하게 여기는 기준은?",
+        "options": [
+            { "text": "멋있어 보이는가", "nextInfo": "q9_wrong", "isCorrect": false },
+            { "text": "실제로 쓰이는가", "nextInfo": "q9_correct", "isCorrect": true }
+        ]
+    },
+
+    "q9_wrong": {
+        "image": " ",
+        "text": "아닙니다.\n멋있어 보이는 건 금방 식습니다.\n쓰이지 않으면,\n없는 것과 다를 바 없다고 생각합니다.",
+        "options": [
+            { "text": "다시 써본다", "nextInfo": "q9" }
+        ]
+    },
+
+    "q9_correct": {
+        "image": "",
+        "text": "정답입니다.\n‘멋있는 것’보다\n‘실제로 쓰이는 것’을 더 좋아합니다.",
+        "options": [
+            { "text": "현실적이라 마음이 아프다", "nextInfo": "next_random" }
+        ]
+    },
+
+    "q_end": {
+        "image": " ",
+        "text": "이 사람을 한 문장으로 말하면?\n여기까지 왔다면,\n이제 대충 감은 잡았을 겁니다.",
+        "options": [
+            { "text": "다재다능한 크리에이터", "nextInfo": "end_roast", "isCorrect": false },
+            { "text": "이상한 데서만 진지한 사람", "nextInfo": "end_true", "isCorrect": true }
+        ]
+    },
+
+    "end_true": {
+        "image": " ",
+        "text": "정답입니다.\n당신은 여기까지 왔고,\n몇 개는 맞혔습니다.\n이 사람은 여전히 게임을 하고,\n르세라핌의 퍼포먼스를 찾아보고,\n고양이 점 위치에 까다로우며,\n왜 사람들이 버튼을 안 누르는지 고민합니다.\n당신의 삶에는,\n아쉽게도 큰 변화가 없습니다.",
+        "options": [
+            { "text": "아무 일 없던 척 다시", "nextInfo": "next_random" }
+        ]
+    },
+
+    "end_roast": {
+        "image": " ",
+        "text": "‘다재다능’은 아닙니다.\n당신도 문제를 몇 개 틀렸고,\n이 사람도 그렇게 대단한 사람은 아닙니다.\n그래도 끝까지 봤네요.\n그 점이 제일 수상합니다.",
+        "options": [
+            { "text": "수상한 채로 다시", "nextInfo": "next_random" }
+        ]
+    },
+
+    "true_ending": {
+        "image": "",
+        "text": "축하합니다.\n당신은 준비된 모든 질문을 통과했습니다.\n이제 이 사람에 대해 꽤 많이 알게 되었습니다.\n\n하지만 현실의 이 사람이 당신이 상상하는 모습일지는 모르겠군요.",
+        "options": [
+            { "text": "처음부터 다시 하기 (기억 리셋)", "nextInfo": "reset_all" }
+        ]
+    }
+};
+
+
+// 오답 화면에서 쓸 ‘쓸데없는 사실’ — 문구 세트
+
+window.uselessFacts = [
+    "이 사람은 슬라이드 한 문장을 20번 넘게 고친 적이 있습니다.\n지금도 그러고 있을 확률이 높습니다.",
+    "짧은 문장을 쓰기 위해 생각보다 오래 고민합니다. 그래서 문장은 짧고 과정은 깁니다.",
+    "고등어와 스파게티는 생각보다 잘 어울립니다. 믿기 힘들겠지만요.",
+    "이 사람은 ‘왜?’라는 말을 생각보다 더 자주 씁니다.",
+    "디테일을 잡다 보면 시간 감각이 먼저 사라집니다. 본인은 아직 괜찮다고 생각합니다.",
+    "이 사람은 버튼을 누르지 않는 이유를 버튼보다 오래 봅니다.",
+    "UX라는 말을 쓰지만, 사실은 사람 얘기를 하고 있습니다.",
+    "문장을 고치다 보면, 내용보다 톤을 먼저 보게 됩니다.",
+    "르세라핌을 좋아합니다. 음악은 물론이고 메시지와 태도, 특히 퍼포먼스를 꼽습니다.",
+    "취향이 넓어 보이지만, 기준은 꽤 좁고 단순한 편입니다.",
+    "고양이를 그릴 때, 귀여움보다 디테일이 먼저입니다.",
+    "입 오른쪽 아래의 까만 점은 빼먹으면 안 됩니다. 정말로요.",
+    "디테일은 취향이 아니라 성격이라고 생각합니다.",
+    "본인에 대한 평가는 늘 팍팍한 편입니다."
+];
+
+// 타이틀 화면 설정
+window.gameConfig = {
+    title: "아이엠 그라운드. 자기소개 하기.",
+    image: " ",
+    buttonText: "시작하기"
+};
