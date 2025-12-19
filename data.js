@@ -253,7 +253,7 @@ window.gameData = {
 
     "q_end": {
         "image": " ",
-        "text": "이 사람을 한 문장으로 말하자면?\n여기까지 왔다면,\n이제 대충 감은 잡았을 겁니다.",
+        "text": "이 사람을 한 문장으로 말하자면?\n여기까지 왔다면,\n이제 대충 감은 잡으셨을 거 같습니다.",
         "options": [
             { "text": "다재다능한 크리에이터", "nextInfo": "end_roast", "isCorrect": false },
             { "text": "이상한 데서 진지한 사람", "nextInfo": "end_true", "isCorrect": true }
