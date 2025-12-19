@@ -45,6 +45,7 @@ class GameManager {
             text: config.title,
             image: config.image,
             imageOffsetY: config.imageOffsetY, // Support offset for title
+            skipTypewriter: true, // 타이틀 화면에서는 타이핑 효과 건너뛰기
             options: [
                 { text: config.buttonText, action: 'startGame' }
             ]
@@ -127,9 +128,11 @@ class GameManager {
     playSound(type) {
         try {
             if (type === 'correct') {
+                this.elements.correctSound.volume = 0.3;
                 this.elements.correctSound.currentTime = 0;
                 this.elements.correctSound.play().catch(e => console.log('Audio play failed', e));
             } else if (type === 'incorrect') {
+                this.elements.incorrectSound.volume = 0.3;
                 this.elements.incorrectSound.currentTime = 0;
                 this.elements.incorrectSound.play().catch(e => console.log('Audio play failed', e));
             }
@@ -138,7 +141,7 @@ class GameManager {
         }
     }
 
-    typewriterEffect(text, onComplete) {
+    typewriterEffect(text, onComplete, muteSound = false) {
         let i = 0;
         this.elements.storyText.innerHTML = '';
         if (this.typingInterval) clearInterval(this.typingInterval);
@@ -146,7 +149,7 @@ class GameManager {
         this.isTyping = true;
 
         // Sound start
-        if (this.typewriterSound) {
+        if (this.typewriterSound && !muteSound) {
             this.typewriterSound.currentTime = 0;
             this.typewriterSound.volume = 0.5;
             this.typewriterSound.play().then(() => {
@@ -210,9 +213,15 @@ class GameManager {
         }
 
         // Type text
-        this.typewriterEffect(data.text, () => {
+        if (data.skipTypewriter) {
+            // 즉시 렌더링
+            this.elements.storyText.innerHTML = data.text.replace(/\n/g, '<br>');
             this.showOptions(data.options);
-        });
+        } else {
+            this.typewriterEffect(data.text, () => {
+                this.showOptions(data.options);
+            });
+        }
 
         // Useless Fact Logic (Show on 'wrong' screens)
         const factEl = document.getElementById('useless-fact');
