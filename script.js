@@ -119,15 +119,7 @@ class GameManager {
             }
         });
 
-        // Update image filter
-        this.elements.gameImage.classList.remove('image-filter-low', 'image-filter-medium', 'image-filter-high');
-        if (this.hearts === 3) {
-            this.elements.gameImage.classList.add('image-filter-low');
-        } else if (this.hearts === 2) {
-            this.elements.gameImage.classList.add('image-filter-medium');
-        } else if (this.hearts === 1) {
-            this.elements.gameImage.classList.add('image-filter-high');
-        }
+
     }
 
     playSound(type) {

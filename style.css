@@ -195,18 +195,7 @@ body {
     transform: translateY(0);
 }
 
-/* Image Filters */
-.image-filter-low {
-    filter: blur(10px);
-}
 
-.image-filter-medium {
-    filter: blur(5px);
-}
-
-.image-filter-high {
-    filter: none;
-}
 
 /* Typing Cursor */
 .typing-cursor {
