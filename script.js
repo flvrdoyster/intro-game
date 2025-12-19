@@ -11,6 +11,7 @@ class GameManager {
         // Cache DOM elements
         this.elements = {
             sceneView: document.getElementById('scene-view'),
+            textArea: document.querySelector('.text-area'),
             gameImage: document.getElementById('gameImage'),
             storyText: document.getElementById('storyText'),
             optionsContainer: document.getElementById('optionsContainer'),
@@ -159,6 +160,7 @@ class GameManager {
             if (i < text.length) {
                 const char = text.charAt(i);
                 this.elements.storyText.innerHTML += (char === '\n') ? '<br>' : char;
+                this.elements.textArea.scrollTop = this.elements.textArea.scrollHeight;
                 i++;
             } else {
                 clearInterval(this.typingInterval);

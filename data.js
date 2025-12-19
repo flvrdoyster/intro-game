@@ -42,7 +42,7 @@ window.gameData = {
     },
 
     "q2_correct": {
-        "image": " ",
+        "image": "img/fim.png",
         "text": "정답.\n노래도 좋아하지만, 메시지와 태도는 더욱 더 좋습니다. 최고는 역시 퍼포먼스죠.\n대부분은 그냥 넘길 부분에서\n혼자 진지해졌다가, 다시 혼자 만족합니다.",
         "options": [
             { "text": "벌써 피곤하다", "nextInfo": "next_random" }
@@ -67,7 +67,7 @@ window.gameData = {
     },
 
     "q3_correct": {
-        "image": " ",
+        "image": "",
         "text": "정답.\n네이버 커넥트재단에서 서비스 기획을 합니다.\n쉽게 말하면,\n서비스라는 집의 설계도를 그리는 역할입니다.\n그리고 지금 이 퀴즈도 설계가 좀 과합니다.",
         "options": [
             { "text": "불안하지만 진행", "nextInfo": "next_random" }
@@ -92,7 +92,7 @@ window.gameData = {
     },
 
     "q4_correct": {
-        "image": " ",
+        "image": "img/hodu.png",
         "text": "정답.\n입 오른쪽 아래에 있는 까만 점.\n이걸 빼먹으면,\n‘아무리 잘 그려도 다시’입니다.\n당신의 관찰력은 간신히 통과.",
         "options": [
             { "text": "괜히 안도한다", "nextInfo": "next_random" }
@@ -117,7 +117,7 @@ window.gameData = {
     },
 
     "q5_correct": {
-        "image": " ",
+        "image": "img/spaghetti.png",
         "text": "정답.\n레시피도 결국 유저 플로우라고 생각합니다.\n간은 취향 따라 조절하지만,\n당신의 선택권은 여기까지입니다.",
         "options": [
             { "text": "선택권 없이 계속", "nextInfo": "next_random" }
@@ -142,7 +142,7 @@ window.gameData = {
     },
 
     "q6_correct": {
-        "image": "",
+        "image": "img/planner.png",
         "text": "정답입니다.\n이 사람이 일을 계속 붙잡고 있는 이유도,\n대부분 여기쯤에 있습니다.",
         "options": [
             { "text": "이해는 잘 안 되지만 계속", "nextInfo": "q_end" }
@@ -167,7 +167,7 @@ window.gameData = {
     },
 
     "q7_correct": {
-        "image": " ",
+        "image": "img/oyster.png",
         "text": "정답입니다.\n석화는 굴입니다.\n이 사람은 그 사실을 꽤 마음에 들어 하고,\n지금도 종종 별명으로 씁니다.",
         "options": [
             { "text": "특이하네", "nextInfo": "next_random" }
