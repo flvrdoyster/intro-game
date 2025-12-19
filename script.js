@@ -44,6 +44,7 @@ class GameManager {
         const titleSceneData = {
             text: config.title,
             image: config.image,
+            imageOffsetY: config.imageOffsetY, // Support offset for title
             options: [
                 { text: config.buttonText, action: 'startGame' }
             ]
@@ -199,6 +200,10 @@ class GameManager {
             this.elements.sceneView.classList.remove('no-image');
             this.elements.gameImage.src = data.image;
             this.elements.gameImage.style.display = 'block';
+
+            // Apply Y-Offset if present (default to center)
+            const offsetY = data.imageOffsetY || 'center';
+            this.elements.gameImage.style.objectPosition = `center ${offsetY}`;
         } else {
             this.elements.sceneView.classList.add('no-image');
             this.elements.gameImage.src = '';

@@ -51,7 +51,7 @@ body {
     z-index: 100;
     display: flex;
     gap: 5px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.15);
     /* Restored background */
     padding: 8px;
     border-radius: 20px;
@@ -170,13 +170,13 @@ body {
 .option-button {
     width: 100%;
     /* Full width */
-    background-color: #4a4a4a;
+    background-color: rgba(0, 0, 0, 0.8);
     color: #ffffff;
     border: none;
     padding: 0.8rem 1rem;
     /* More padding */
     border-radius: 25px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
     font-family: var(--font-family);
     transition: transform 0.2s, background-color 0.2s;
@@ -187,7 +187,7 @@ body {
 }
 
 .option-button:hover {
-    background-color: #636363;
+    background-color: rgba(0, 0, 0, 0.4);
     transform: translateY(-2px);
 }
 
