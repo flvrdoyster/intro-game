@@ -234,7 +234,14 @@ class GameManager {
         this.elements.optionsContainer.innerHTML = '';
         if (!options) return;
 
-        options.forEach(opt => {
+        // Clone and Shuffle Options
+        const shuffledOptions = [...options];
+        for (let i = shuffledOptions.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
+        }
+
+        shuffledOptions.forEach(opt => {
             const btn = document.createElement('button');
             btn.className = 'option-button';
             btn.textContent = opt.text;
