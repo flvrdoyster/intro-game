@@ -1,7 +1,7 @@
 window.gameData = {
     "start": {
         "image": " ",
-        "text": "이건 한 사람을 소개하는 퀴즈입니다.\n그리고 지금, 당신은 남의 취향을 맞히는 데 시간을 쓰려고 합니다. (네, 자발적으로요.)\n첫 질문부터 바로 갑니다. \n이 사람은 뭘 더 원할까요?",
+        "text": "이건 한 사람을 소개하는 퀴즈입니다.\n그리고 지금, 당신은 남의 취향을 맞히는 데 시간을 쓰려고 합니다. (네, 자발적으로요.)\n첫 질문부터 갑니다. \n이 사람은 뭘 더 원할까요?",
         "options": [
             { "text": "인생을 바꿀 묘책", "nextInfo": "start_wrong", "isCorrect": false },
             { "text": "게임", "nextInfo": "start_correct", "isCorrect": true }
@@ -68,7 +68,7 @@ window.gameData = {
 
     "q3_correct": {
         "image": " ",
-        "text": "정답.\n네이버 커넥트재단에서 서비스 기획을 합니다.\n쉽게 말하면,\n서비스라는 집의 설계도를 그리는 역할입니다.\n그리고 지금 이 퀴즈도, 설계가 좀 과합니다.",
+        "text": "정답.\n네이버 커넥트재단에서 서비스 기획을 합니다.\n쉽게 말하면,\n서비스라는 집의 설계도를 그리는 역할입니다.\n그리고 지금 이 퀴즈도 설계가 좀 과합니다.",
         "options": [
             { "text": "불안하지만 진행", "nextInfo": "next_random" }
         ]
@@ -201,16 +201,16 @@ window.gameData = {
 
     "q9": {
         "image": " ",
-        "text": "이 사람이 일을 설명할 때 중요하게 여기는 기준은?",
+        "text": "이 사람이 일을 할 때 중요하게 여기는 기준은?",
         "options": [
-            { "text": "멋있어 보이는가", "nextInfo": "q9_wrong", "isCorrect": false },
+            { "text": "있어 보이는가", "nextInfo": "q9_wrong", "isCorrect": false },
             { "text": "실제로 쓰이는가", "nextInfo": "q9_correct", "isCorrect": true }
         ]
     },
 
     "q9_wrong": {
         "image": " ",
-        "text": "아닙니다.\n멋있어 보이는 건 금방 식습니다.\n쓰이지 않으면,\n없는 것과 다를 바 없다고 생각합니다.",
+        "text": "아닙니다.\n있어 보이는 건 금방 식습니다.\n쓰이지 않으면,\n없는 것과 다를 바 없다고 생각합니다.",
         "options": [
             { "text": "다시 고른다", "nextInfo": "q9" }
         ]
@@ -218,18 +218,18 @@ window.gameData = {
 
     "q9_correct": {
         "image": "",
-        "text": "정답입니다.\n‘멋있는 것’보다\n‘실제로 쓰이는 것’을 더 좋아합니다.",
+        "text": "정답입니다.\n‘있어 보이는 것’보다\n‘실제로 쓰이는 것’을 더 선호합니다.",
         "options": [
-            { "text": "현실적이라 마음이 아프다", "nextInfo": "next_random" }
+            { "text": "까다롭네", "nextInfo": "next_random" }
         ]
     },
 
     "q_end": {
         "image": " ",
-        "text": "이 사람을 한 문장으로 말하면?\n여기까지 왔다면,\n이제 대충 감은 잡았을 겁니다.",
+        "text": "이 사람을 한 문장으로 말하자면?\n여기까지 왔다면,\n이제 대충 감은 잡았을 겁니다.",
         "options": [
             { "text": "다재다능한 크리에이터", "nextInfo": "end_roast", "isCorrect": false },
-            { "text": "이상한 데서만 진지한 사람", "nextInfo": "end_true", "isCorrect": true }
+            { "text": "이상한 데서 진지한 사람", "nextInfo": "end_true", "isCorrect": true }
         ]
     },
 
@@ -250,8 +250,8 @@ window.gameData = {
     },
 
     "true_ending": {
-        "image": "img/a_planner.png",
-        "text": "축하합니다.\n당신은 준비된 모든 질문을 통과했습니다.\n이제 이 사람에 대해 꽤 많이 알게 되었습니다.\n\n하지만 현실에서는,\n퀴즈보다 더 복잡한 문제들이 기다리고 있습니다.\n그래도 당신이라면,\n꽤 재미있는 답을 찾을 겁니다.",
+        "image": "img/true_ending.png",
+        "text": "축하합니다.\n당신은 준비된 모든 질문을 통과했습니다.\n이제 이 사람에 대해 꽤 많이 알게 되었습니다.\n하지만 현실에서 이 사람이,\n당신이 상상하는 모습일지는 모르겠네요.",
         "options": [
             { "text": "처음부터 다시 하기 (기억 리셋)", "nextInfo": "reset_all" }
         ]
@@ -259,7 +259,7 @@ window.gameData = {
 
     "game_over": {
         "image": " ",
-        "text": "모든 하트를 잃었습니다. 다시 시작하세요.",
+        "text": "모든 하트를 잃었습니다. (그런게 있었나?)\n원한다면 다시 시작하세요.",
         "options": [
             { "text": "다시 시작하기", "action": "startGame" }
         ]
@@ -270,7 +270,7 @@ window.gameData = {
 // 오답 화면에서 쓸 ‘쓸데없는 사실’ — 문구 세트
 
 window.uselessFacts = [
-    "이 사람은 슬라이드 한 문장을 20번 넘게 고친 적이 있습니다.\n지금도 그러고 있을 확률이 높습니다.",
+    "이 사람은 한 문장을 20번 넘게 고칩니다. 지금도 그러고 있을 확률이 높습니다.",
     "짧은 문장을 쓰기 위해 생각보다 오래 고민합니다. 그래서 문장은 짧고 과정은 깁니다.",
     "고등어와 스파게티는 생각보다 잘 어울립니다. 믿기 힘들겠지만요.",
     "이 사람은 ‘왜?’라는 말을 생각보다 더 자주 씁니다.",
@@ -290,5 +290,5 @@ window.uselessFacts = [
 window.gameConfig = {
     title: "아이엠 그라운드. 자기소개 하기.",
     image: " ",
-    buttonText: "시작하기"
+    buttonText: "지금부터 시작"
 };
