@@ -1,7 +1,7 @@
 window.gameData = {
     "start": {
         "image": " ",
-        "text": "이건 어떤 이를 소개하고자 만든 퀴즈 게임입니다.\n그리고 지금, 당신은 생판 모르는 누군가를 알기 위해서 기꺼이 자신의 소중한 시간을 쓰려고 하고 있죠.\n(네, 그것도 아무도 안 시켰는데 말입니다.)\n어쩔 수 없네요.\n첫 번째 문제부터 갑니다. \n이 사람은 둘 중에 뭘 더 원할까요?",
+        "text": "이건 어떤 이를 소개하고자 만든 퀴즈 게임입니다.\n그리고 지금, 당신은 생판 모르는 누군가를 알기 위해서 기꺼이 자신의 소중한 시간을 쓰려고 하고 있죠.\n(네, 그것도 아무도 안 시켰는데 말입니다.)\n그럼, 첫 번째 문제부터 갑니다. \n이 사람은 둘 중에 뭘 더 원할까요?",
         "options": [
             { "text": "인생을 바꿀 묘책", "nextInfo": "start_wrong", "isCorrect": false },
             { "text": "신작 게임", "nextInfo": "start_correct", "isCorrect": true }
@@ -223,6 +223,31 @@ window.gameData = {
         "text": "정답입니다.\n‘있어 보이는 것’보다\n‘실제로 쓰이는 것’이 더 중요하다고 생각합니다.\n당연할지도 모르겠네요.",
         "options": [
             { "text": "그러시던지", "nextInfo": "next_random" }
+        ]
+    },
+
+    "q10": {
+        "image": " ",
+        "text": "이 사람이 무언가를 고를 때, 더 자주 신경 쓰는 건 뭘까요?",
+        "options": [
+            { "text": "처음 봤을 때 딱 드는 느낌", "nextInfo": "q10_wrong", "isCorrect": false },
+            { "text": "나중에 귀찮아질 포인트", "nextInfo": "q10_correct", "isCorrect": true }
+        ]
+    },
+
+    "q10_wrong": {
+        "image": " ",
+        "text": "아닙니다.\n느낌을 안 보는 건 아닌데,\n그건 항상 첫 번째 필터일 뿐입니다.\n문제는 그 다음입니다.",
+        "options": [
+            { "text": "그 다음이 뭐길래", "nextInfo": "q10" }
+        ]
+    },
+
+    "q10_correct": {
+        "image": " ",
+        "text": "정답입니다.\n이 사람은 시작보다,\n'나중에 성가셔질 지점'을 먼저 봅니다.\n그래서 가끔 스스로도 피곤해합니다.",
+        "options": [
+            { "text": "본인도 아네", "nextInfo": "next_random" }
         ]
     },
 
