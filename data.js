@@ -3,14 +3,14 @@ window.gameData = {
         "image": " ",
         "text": "이건 어떤 이를 소개하고자 만든 퀴즈 게임입니다.\n그리고 지금, 당신은 생판 모르는 누군가를 알기 위해서 기꺼이 자신의 소중한 시간을 쓰려고 하고 있죠.\n(네, 그것도 아무도 안 시켰는데 말입니다.)\n그럼, 첫 번째 문제부터 갑니다. \n이 사람은 둘 중에 뭘 더 원할까요?",
         "options": [
-            { "text": "인생을 바꿀 묘책", "nextInfo": "start_wrong", "isCorrect": false },
+            { "text": "인생을 바꿀 투자 정보", "nextInfo": "start_wrong", "isCorrect": false },
             { "text": "신작 게임", "nextInfo": "start_correct", "isCorrect": true }
         ]
     },
 
     "start_wrong": {
         "image": " ",
-        "text": "아닙니다.\n이 사람은 성장에 관심이 없는 건 아닌데,\n‘이거 하나면 인생이 바뀝니다’ 같은 말은 잘 못 믿습니다.\n방금 당신도 그 말에 가까운 선택을 했습니다.",
+        "text": "아닙니다.\n이 사람도 일확천금(?)에 관심이 없는 건 아닌데,\n‘이거면 인생이 바뀝니다’ 같은 말은 잘 못 믿습니다.\n방금 당신도 그 말에 가까운 선택을 했습니다.",
         "options": [
             { "text": "아무 일 없던 척 다시", "nextInfo": "start" }
         ]
@@ -86,7 +86,7 @@ window.gameData = {
 
     "q4_wrong": {
         "image": " ",
-        "text": "아닙니다.\n할 일 목록은 생각보다 지저분하기 그지 없습니다.\n때때론 아예 없습니다.\n대신 반려 고양이 일러스트의 디테일은 절대 안 놓칩니다.\n중요도의 기준이 독특합니다.",
+        "text": "아닙니다.\n할 일 목록은 생각보다 지저분하기 그지 없습니다.\n때때론 아예 없습니다.\n대신 반려 고양이 일러스트의 디테일은 절대 놓치지 않습니다.\n중요도의 기준이 조금 독특합니다.",
         "options": [
             { "text": "기준을 이해해본다", "nextInfo": "q4" }
         ]
@@ -94,7 +94,7 @@ window.gameData = {
 
     "q4_correct": {
         "image": "img/hodu.png",
-        "text": "정답.\nAI가 입가의 까만 점을 빼먹으면,\n‘아무리 잘 그려도 다시’ 입니다.\n당신의 관찰력은 간신히 통과.",
+        "text": "정답.\nAI가 입가의 까만 점을 빼먹으면,\n‘아무리 잘 그려도 다시’ 입니다.\n당신의 선택은 아슬아슬하게 통과.",
         "options": [
             { "text": "괜히 안도한다", "nextInfo": "next_random" }
         ]
@@ -228,7 +228,7 @@ window.gameData = {
 
     "q10": {
         "image": " ",
-        "text": "이 사람이 무언가를 고를 때, 더 자주 신경 쓰는 건 뭘까요?",
+        "text": "이 사람이 무언가를 고를 때, 더 자주 신경 쓰는 것은?",
         "options": [
             { "text": "처음 봤을 때 딱 드는 느낌", "nextInfo": "q10_wrong", "isCorrect": false },
             { "text": "나중에 귀찮아질 포인트", "nextInfo": "q10_correct", "isCorrect": true }
