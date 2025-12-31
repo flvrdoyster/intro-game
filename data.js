@@ -1,6 +1,6 @@
 window.gameData = {
     "start": {
-        "image": " ",
+        "image": "",
         "text": "이건 어떤 이를 소개하고자 만든 퀴즈 게임입니다.\n그리고 지금, 당신은 생판 모르는 누군가를 알기 위해서 기꺼이 자신의 소중한 시간을 쓰려고 하고 있죠.\n(네, 그것도 아무도 안 시켰는데 말입니다.)\n그럼, 첫 번째 문제부터 갑니다. \n이 사람은 둘 중에 뭘 더 원할까요?",
         "options": [
             { "text": "인생을 바꿀 투자 정보", "nextInfo": "start_wrong", "isCorrect": false },
@@ -9,15 +9,15 @@ window.gameData = {
     },
 
     "start_wrong": {
-        "image": " ",
-        "text": "아닙니다.\n이 사람도 일확천금(?)에 관심이 없는 건 아닌데,\n‘이거면 인생이 바뀝니다’ 같은 말은 잘 못 믿습니다.\n방금 당신도 그 말에 가까운 선택을 했습니다.",
+        "image": "",
+        "text": "아닙니다. (보통은 이쪽을 고르겠죠.)\n이 사람도 일확천금(?)에 관심이 없는 건 아닌데,\n‘이거면 인생이 바뀝니다’ 같은 말은 잘 못 믿습니다.\n방금 당신도 그 말에 가까운 선택을 했습니다.",
         "options": [
             { "text": "아무 일 없던 척 다시", "nextInfo": "start" }
         ]
     },
 
     "start_correct": {
-        "image": " ",
+        "image": "",
         "text": "정답.\n분명, 신작 게임을 더 원할 겁니다.\n재미 있으면 좋고, 재미 없어도 그냥 넘기지 않습니다.\n‘왜 재미 없지?’ 까지 가는 피곤한 타입입니다.\n그래서 당신의 지금 이 선택도, 이미 관찰 대상입니다.",
         "options": [
             { "text": "괜히 눌렀다", "nextInfo": "next_random" }
@@ -25,7 +25,7 @@ window.gameData = {
     },
 
     "q2": {
-        "image": " ",
+        "image": "",
         "text": "이 사람이 좋아할 만한 아이돌은?",
         "options": [
             { "text": "요즘 많이 보이는 팀", "nextInfo": "q2_wrong", "isCorrect": false },
@@ -34,7 +34,7 @@ window.gameData = {
     },
 
     "q2_wrong": {
-        "image": " ",
+        "image": "",
         "text": "아닙니다.\n이 사람은 생각보다 한 번 꽂히면 오래 갑니다.\n당신의 선택은 빠르고 가벼웠습니다.\n이 사람은 그걸 맘에 들어하지 않습니다.",
         "options": [
             { "text": "다시 생각해 본다", "nextInfo": "q2" }
@@ -51,7 +51,7 @@ window.gameData = {
     },
 
     "q3": {
-        "image": " ",
+        "image": "",
         "text": "이 사람의 일을 가장 정확하게 말하면?",
         "options": [
             { "text": "(아무튼) 기획자", "nextInfo": "q3_half", "isCorrect": false },
@@ -60,7 +60,7 @@ window.gameData = {
     },
 
     "q3_half": {
-        "image": " ",
+        "image": "",
         "text": "반만 맞았습니다.\n‘아무튼’이라고 말하는 순간,\n이 사람 머릿속에서는 질문이 몇 개 더 생깁니다.\n지금 당신도 그 중 하나입니다.",
         "options": [
             { "text": "질문으로부터 도망치기", "nextInfo": "q3" }
@@ -76,7 +76,7 @@ window.gameData = {
     },
 
     "q4": {
-        "image": " ",
+        "image": "",
         "text": "이 사람의 집요함이 가장 많이 쓰이는 곳은?",
         "options": [
             { "text": "반려 고양이 일러스트 디테일", "nextInfo": "q4_correct", "isCorrect": true },
@@ -85,7 +85,7 @@ window.gameData = {
     },
 
     "q4_wrong": {
-        "image": " ",
+        "image": "",
         "text": "아닙니다.\n할 일 목록은 생각보다 지저분하기 그지 없습니다.\n때때론 아예 없습니다.\n대신 반려 고양이 일러스트의 디테일은 절대 놓치지 않습니다.\n중요도의 기준이 조금 독특합니다.",
         "options": [
             { "text": "기준을 이해해본다", "nextInfo": "q4" }
@@ -101,7 +101,7 @@ window.gameData = {
     },
 
     "q5": {
-        "image": " ",
+        "image": "",
         "text": "이 사람이 실제로 해본 요리는?",
         "options": [
             { "text": "고등어 스파게티", "nextInfo": "q5_correct", "isCorrect": true },
@@ -110,7 +110,7 @@ window.gameData = {
     },
 
     "q5_wrong": {
-        "image": " ",
+        "image": "",
         "text": "아닙니다.\n이건 과대평가입니다.\n대신 생선을 파스타에 넣는 정도의 용기는 있습니다.\n그리고 그건 당신의 예상보다 맛있을지 모릅니다.",
         "options": [
             { "text": "알 바 아님", "nextInfo": "q5" }
@@ -152,7 +152,7 @@ window.gameData = {
     },
 
     "q7": {
-        "image": " ",
+        "image": "",
         "text": "이 사람의 이름에서 비롯된, 본인이 직접 붙인 별명은?",
         "options": [
             { "text": "굴", "nextInfo": "q7_correct", "isCorrect": true },
@@ -161,7 +161,7 @@ window.gameData = {
     },
 
     "q7_wrong": {
-        "image": " ",
+        "image": "",
         "text": "아닙니다.\n적어도 그 시절의 별명은 직접 붙이진 않았던 것 같습니다.",
         "options": [
             { "text": "다시 생각해본다", "nextInfo": "q7" }
@@ -177,7 +177,7 @@ window.gameData = {
     },
 
     "q8": {
-        "image": " ",
+        "image": "",
         "text": "이 사람이 스스로를 설명할 때 자주 꺼내는 단어는?",
         "options": [
             { "text": "완벽주의", "nextInfo": "q8_wrong", "isCorrect": false },
@@ -186,7 +186,7 @@ window.gameData = {
     },
 
     "q8_wrong": {
-        "image": " ",
+        "image": "",
         "text": "아닙니다.\n완벽을 원하진 않습니다.\n다만, 남들보다 그걸 잘 캐치하는 편입니다.\n비슷해 보여도 이 사람은 구분합니다.",
         "options": [
             { "text": "구분해보며 다시", "nextInfo": "q8" }
@@ -194,7 +194,7 @@ window.gameData = {
     },
 
     "q8_correct": {
-        "image": " ",
+        "image": "",
         "text": "정답입니다.\n이 사람은 예민함을\n'단점'보다는 '도구'에 가깝게 생각합니다.\n관리만 되면, 꽤 쓸 만하다고 믿습니다.",
         "options": [
             { "text": "도구 취급하면서 다음", "nextInfo": "next_random" }
@@ -202,7 +202,7 @@ window.gameData = {
     },
 
     "q9": {
-        "image": " ",
+        "image": "",
         "text": "이 사람이 일을 할 때 중요하게 여기는 것은?",
         "options": [
             { "text": "있어 보이는가", "nextInfo": "q9_wrong", "isCorrect": false },
@@ -211,7 +211,7 @@ window.gameData = {
     },
 
     "q9_wrong": {
-        "image": " ",
+        "image": "",
         "text": "아닙니다.\n있어 보이는 건 금방 식습니다.\n쓰이지 않으면,\n없는 것과 다를 바 없다고 생각합니다.",
         "options": [
             { "text": "다시 고른다", "nextInfo": "q9" }
@@ -227,7 +227,7 @@ window.gameData = {
     },
 
     "q10": {
-        "image": " ",
+        "image": "",
         "text": "이 사람이 무언가를 고를 때, 더 자주 신경 쓰는 것은?",
         "options": [
             { "text": "처음 봤을 때 딱 드는 느낌", "nextInfo": "q10_wrong", "isCorrect": false },
@@ -236,7 +236,7 @@ window.gameData = {
     },
 
     "q10_wrong": {
-        "image": " ",
+        "image": "",
         "text": "아닙니다.\n느낌을 안 보는 건 아닌데,\n그건 항상 첫 번째 필터일 뿐입니다.\n문제는 그 다음입니다.",
         "options": [
             { "text": "그 다음이 뭐길래", "nextInfo": "q10" }
@@ -244,7 +244,7 @@ window.gameData = {
     },
 
     "q10_correct": {
-        "image": " ",
+        "image": "",
         "text": "정답입니다.\n이 사람은 시작보다,\n'나중에 성가셔질 지점'을 먼저 봅니다.\n그래서 가끔 스스로도 피곤해합니다.",
         "options": [
             { "text": "본인도 아네", "nextInfo": "next_random" }
@@ -252,7 +252,7 @@ window.gameData = {
     },
 
     "q11": {
-        "image": " ",
+        "image": "",
         "text": "이 사람이 설명을 귀찮아하는 순간은?",
         "options": [
             { "text": "설명이 길어질 때", "nextInfo": "q11_wrong", "isCorrect": false },
@@ -261,7 +261,7 @@ window.gameData = {
     },
 
     "q11_wrong": {
-        "image": " ",
+        "image": "",
         "text": "아닙니다.\n길이는 문제가 아닙니다.\n방향이 명확하다면요.\n문제는 ‘이걸 해서 뭐가 달라지지?’가 떠오르는 순간입니다.",
         "options": [
             { "text": "그럼 다시", "nextInfo": "q11" }
@@ -269,7 +269,7 @@ window.gameData = {
     },
 
     "q11_correct": {
-        "image": " ",
+        "image": "",
         "text": "정답입니다.\n이 사람은 설명을 좋아하는 편입니다.\n그래서 더 귀찮습니다.\n‘설명해도 안 달라질’ 때는요.",
         "options": [
             { "text": "귀찮은 건 인정", "nextInfo": "next_random" }
@@ -286,7 +286,7 @@ window.gameData = {
     },
 
     "q12_correct": {
-        "image": " ",
+        "image": "",
         "text": "의심해서라기보다는,\n그냥 한 번 더 보고 싶어서입니다.",
         "options": [
             { "text": "자아도취?", "nextInfo": "next_random" }
@@ -327,7 +327,7 @@ window.gameData = {
     },
 
     "q_end": {
-        "image": " ",
+        "image": "",
         "text": "이 사람을 한 문장으로 말하자면?\n여기까지 왔다면,\n이제 대충 감은 잡으셨을 거 같습니다.",
         "options": [
             { "text": "다재다능한 크리에이터", "nextInfo": "end_roast", "isCorrect": false },
@@ -336,7 +336,7 @@ window.gameData = {
     },
 
     "end_true": {
-        "image": " ",
+        "image": "",
         "text": "정답입니다.\n당신은 여기까지 왔고,\n몇 개의 문제를 맞혔습니다.\n이 사람은 여전히 게임을 하고,\n르세라핌의 퍼포먼스를 찾아보고,\n고양이 점 위치에 까다로우며,\n왜 사람들이 버튼을 안 누르는지 고민합니다.\n당신의 삶에는,\n어쨌거나 큰 영향을 주지 않습니다.",
         "options": [
             { "text": "아무 일 없던 척 다시", "nextInfo": "next_random" }
@@ -344,7 +344,7 @@ window.gameData = {
     },
 
     "end_roast": {
-        "image": " ",
+        "image": "",
         "text": "‘다재다능’은 아닙니다.\n당신도 몇 개의 문제를 틀렸고,\n이 사람도 그렇게 대단한 사람이 아닙니다.\n그래도 끝까지 왔네요.\n그 점이 제일 수상합니다.",
         "options": [
             { "text": "수상한 채로 다시", "nextInfo": "next_random" }
@@ -360,7 +360,7 @@ window.gameData = {
     },
 
     "game_over": {
-        "image": " ",
+        "image": "",
         "text": "모든 하트를 잃었습니다. (그런게 있었나?)\n원한다면 다시 시작하세요.",
         "options": [
             { "text": "다시 시작하기", "action": "startGame" }
@@ -399,8 +399,8 @@ window.uselessFacts = [
 // 타이틀 화면 설정
 
 window.gameConfig = {
-    title: "아이엠 그라운드. 자기소개 하기.",
-    image: " ",
+    title: "아이엠 그라운드. 자기소개를 겸해 만든 퀴즈 게임입니다. 사실 별다른 의미는 없습니다.",
+    image: "",
     imageOffsetY: "center",
     buttonText: "지금부터 시작"
 };
