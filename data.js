@@ -147,7 +147,7 @@ window.gameData = {
         "image": "img/planner.png",
         "text": "정답입니다.\n이 사람이 이 일을 계속 붙잡고 있는 이유도,\n대부분 여기쯤에 있습니다.",
         "options": [
-            { "text": "이해는 잘 안 되지만 계속", "nextInfo": "q_end" }
+            { "text": "이해는 잘 안 되지만 계속", "nextInfo": "next_random" }
         ]
     },
 
@@ -251,6 +251,81 @@ window.gameData = {
         ]
     },
 
+    "q11": {
+        "image": " ",
+        "text": "이 사람이 설명을 귀찮아하는 순간은?",
+        "options": [
+            { "text": "설명이 길어질 때", "nextInfo": "q11_wrong", "isCorrect": false },
+            { "text": "설명해도 달라질 것 같지 않을 때", "nextInfo": "q11_correct", "isCorrect": true }
+        ]
+    },
+
+    "q11_wrong": {
+        "image": " ",
+        "text": "아닙니다.\n길이는 문제가 아닙니다.\n방향이 명확하다면요.\n문제는 ‘이걸 해서 뭐가 달라지지?’가 떠오르는 순간입니다.",
+        "options": [
+            { "text": "그럼 다시", "nextInfo": "q11" }
+        ]
+    },
+
+    "q11_correct": {
+        "image": " ",
+        "text": "정답입니다.\n이 사람은 설명을 좋아하는 편입니다.\n그래서 더 귀찮습니다.\n‘설명해도 안 달라질’ 때는요.",
+        "options": [
+            { "text": "귀찮은 건 인정", "nextInfo": "next_random" }
+        ]
+    },
+
+    "q12": {
+        "image": "",
+        "text": "이 사람이 생각보다 자주 하는 행동은?",
+        "options": [
+            { "text": "이미 결정한 걸, 한 번 더 확인하러 돌아간다", "nextInfo": "q12_correct", "isCorrect": true },
+            { "text": "결정했으면 웬만하면 밀어붙인다", "nextInfo": "q12_wrong", "isCorrect": false }
+        ]
+    },
+
+    "q12_correct": {
+        "image": " ",
+        "text": "의심해서라기보다는,\n그냥 한 번 더 보고 싶어서입니다.",
+        "options": [
+            { "text": "자아도취?", "nextInfo": "next_random" }
+        ]
+    },
+
+    "q12_wrong": {
+        "image": "",
+        "text": "이상적으로는 그렇습니다.\n하지만 발걸음이 한 번쯤 돌아갑니다.",
+        "options": [
+            { "text": "완전 추진형은 아님", "nextInfo": "q12" }
+        ]
+    },
+
+    "q13": {
+        "image": "",
+        "text": "이 사람이 자주 미루는 것은?",
+        "options": [
+            { "text": "솔직히 하기 싫은 일", "nextInfo": "q13_wrong", "isCorrect": false },
+            { "text": "끝났다고 말하기 애매한 일", "nextInfo": "q13_correct", "isCorrect": true }
+        ]
+    },
+
+    "q13_correct": {
+        "image": "",
+        "text": "게을러서가 아니라,\n끝이라는 말을 쉽게 못 붙이는 편입니다.",
+        "options": [
+            { "text": "아… 그런 타입", "nextInfo": "next_random" }
+        ]
+    },
+
+    "q13_wrong": {
+        "image": "",
+        "text": "싫은 건 오히려 빨리 처리합니다.\n애매한 게 제일 오래 남습니다.",
+        "options": [
+            { "text": "괜히 찔렸다", "nextInfo": "q13" }
+        ]
+    },
+
     "q_end": {
         "image": " ",
         "text": "이 사람을 한 문장으로 말하자면?\n여기까지 왔다면,\n이제 대충 감은 잡으셨을 거 같습니다.",
@@ -313,6 +388,12 @@ window.uselessFacts = [
     "본인에 대한 평가는 늘 팍팍한 편입니다.",
     "ChatGPT 왈, '굳이 여기까지 만드는 사람'입니다.",
     "성가신 일을 정말 싫어하지만, 본인이 빠진 일은 남에게 늘 성가십니다.",
+    "심심함은 참고 견디는 게 아니라, 가능한 한 빨리 탈출해야 하는 상태라고 생각합니다.",
+    "설명할 가치가 있다고 판단되면, 말수가 갑자기 늘어납니다.",
+    "관심 없는 주제에선 질문을 거의 하지 않습니다.",
+    "‘몰라’라고 말할 땐, 정말 모르는 경우보다 말하기 귀찮은 경우가 더 많습니다.",
+    "이 사람은 설명을 잘 듣는 사람보다, 설명을 잘 요구하는 사람을 더 좋아합니다.",
+    "본인은 가볍게 말했다고 생각한 말이, 종종 오래 남는 편입니다."
 ];
 
 // 타이틀 화면 설정
